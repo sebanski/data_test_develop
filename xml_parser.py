@@ -110,8 +110,11 @@ class TestXMLParser(unittest.TestCase):
 		self.assertEqual(1, 1)
 
 if __name__ == "__main__":
+	import os
 	args = setup_args()
 	urls = [ url for url in open(args.url_file, 'r').readlines() ]
+	if not os.path.isdir(args.csv_out_dir):
+		os.mkdir(args.csv_out_dir)
 	for url in urls:
 		if url.endswith('\n'):
 			url = url.replace('\n','')
